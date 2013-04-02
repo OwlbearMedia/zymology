@@ -1,0 +1,243 @@
+body {
+  font-family: 'Gentium Book Basic', serif;
+  font-size: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+h1 {
+  font-size: 2.618em;
+}
+h2 {
+  font-size: 1.82em;
+}
+h3, .lead {
+  font-size: 1.618em;
+}
+p {
+  font-size: 1.125em;
+  max-width: 750px;
+}
+.navbar .nav > li > a {
+  font-family: 'Gentium Book Basic', serif;
+}
+/* Start my styles */
+#content {
+  margin: 50px auto 0;
+}
+.recipe-header {
+  display: inline-block;
+  margin: 10px 20px 10px 0;
+}
+.recipe-edit {
+  vertical-align: 10px;
+}
+.recipe-section {
+  border-top: 1px solid #999;
+}
+.title {
+  font-weight: bold;
+}
+.attr.title {
+  cursor: pointer;
+  padding: 0 20px;
+}
+.attr {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  float: left;
+  margin: 0 5px 0 0;
+  min-width: 40px;
+  padding: 0 10px;
+}
+.edit-btn {
+  float: right;
+}
+.hop:first-child, .yeast:first-child, .fermentable:first-child {
+  border-top: 1px solid #999;
+}
+.hop, .yeast, .fermentable {
+  border-bottom: 1px solid #999;
+  line-height: 25px;
+  padding: 5px 0;
+}
+.mutator {
+  margin: 10px 0;
+}
+.has-label {
+  float: left;
+  margin: 0 15px 0 0;
+}
+.no-label {
+  float: left;
+  margin: 25px 15px 0 0;
+}
+.no-label span {
+  line-height: 28px;
+}
+.edit {
+  display: none;
+  margin: 0;
+}
+/* Responsive CSS */
+@media screen and (max-width: 979px) {
+  #content {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 979px) and (min-width: 768px) {
+  .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 95%;
+  }  
+}
+@media screen and (max-width: 767px) {
+  .attr {
+    margin: 0 0 3px 0;
+    padding: 0 2%;
+    width: 96%;
+  }
+  .split1 {
+    width: 44%;
+  }
+  .split2 {
+    width: 44%;
+    float: right;
+  }
+  /*.recipe-info .recipe-info-unit {
+    border-right: 0;
+    margin: 0;
+  }*/
+}
+@media screen and (max-width: 479px) {
+  .recipe-edit {
+    display: block;
+    margin: 0 0 10px 0;
+  }
+}
+
+
+
+/*
+.row {
+  margin-left: 0;
+}
+.row div:first-child {
+  margin-left: 0;
+}
+#header {
+  background-color: #DCDCDC;
+  border-radius: 15px;
+  padding: 10px;
+}
+#header h1 {
+  margin: 0;
+}
+#content {
+  background-color: #EEE;
+  border-radius: 6px;
+  margin: 50px auto 0;
+  padding: 10px;
+}
+#content h2 {
+  border-bottom: 1px solid #999;
+  margin: 10px 0 5px 0;
+  padding: 0 0 10px 0;
+}
+#content h3 {
+  border-bottom: 1px solid #999;
+  font-size: 17.5px;
+  line-height: 20px;
+  padding: 0 0 10px 0;
+}
+#content h3.malts {
+  border-bottom: none;
+  padding: 0;
+}
+.recipe-info {
+  border-bottom: 1px solid #999;
+  padding: 0 0 5px 0;
+}
+.recipe-info .recipe-info-unit {
+  border-right: 1px solid #999;
+  margin: 0 0 0 20px;
+  padding: 10px;
+  position: relative;
+}
+.recipe-info .recipe-info-unit .title {
+  font-size: 17.5px;
+  font-weight: bold;
+}
+.recipe-info .recipe-info-unit p {
+  margin: 0;
+}
+.recipe-info .recipe-info-unit i.icon-edit,
+.fermentables .fermentable .modify {
+  cursor: pointer;
+  position: absolute;
+  right: 9px;
+  top: 6px;
+}
+.fermentables .fermentable i.icon-ok {
+  display: none;
+}
+.fermentables .fermentable .delete {
+  cursor: pointer;
+  position: absolute;
+  right: 63px;
+  top: 6px;
+}
+.fermentables .fermentable {
+  border-top: 1px solid #999;
+  font-weight: bold;
+  line-height: 24px;
+  margin: 0 0 6px 0;
+  padding: 5px;
+  position: relative;
+}
+.fermentables .fermentable .attr {
+  background-color: #ccc;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 27px;
+  margin: 3px 9px 3px 0;
+  padding: 3px 10px;
+}
+.fermentable .edit,
+.hop .edit,
+.yeast .edit {
+  display: none;
+}
+.fermentables .mutator {
+  border-top: 1px solid #999;
+  padding: 10px 0;
+}
+#content .mutator .has-label,
+.fermentable .edit .has-label {
+  float: left;
+  margin: 0 15px 0 0;
+}
+#content .mutator .no-label,
+.fermentable .edit .no-label {
+  float: left;
+  margin: 25px 15px 0 0;
+}
+#content .mutator .no-label span,
+.fermentable .edit .no-label span {
+  line-height: 28px;
+}
+.fermentables input.quantity {
+  width: 38px;
+}
+.hops .hop {
+  border-bottom: 1px solid #999;
+  margin: 0 0 6px 0;
+  padding: 5px;
+  position: relative;
+}
+.hops .mutator select {
+  width: 170px;
+}
+*/
+

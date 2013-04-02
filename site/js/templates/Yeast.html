@@ -1,0 +1,18 @@
+<div class="view row-fluid">
+  <div class="attr span3"><%= manufacturer %> <%= number %> <%= strain %></div>
+  <div class="attr span2"><%= flocculation %> flocculation</div><!-- /.attr -->
+  <div class="attr span2"><%= (attenuation * 100) %>% attenuation</div><!-- /.attr -->
+  <button class="btn btn-mini delete"><i data-attr="size" class="icon-remove" title="Delete"></i> Delete</button>
+  <button class="btn btn-mini modify"><i data-attr="size" class="icon-edit" title="Edit"></i> Edit</button>
+</div><!-- /.view -->
+<div class="edit mutator row-fluid">
+  <div class="has-label">
+    <label>Quantity</label>
+    <input class="input-mini quantity" name="quantity" placeholder="Quantity" type="text" value="<%= quantity %>">
+  </div><!-- /.has-label -->
+  <div class="no-label">
+    <span><%= strain %></span>
+  </div><!-- /.no-label -->
+    <button class="btn save">Save</button>
+  </div><!-- /.no-label -->
+</div><!-- /.edit -->

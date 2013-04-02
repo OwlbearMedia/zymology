@@ -1,0 +1,38 @@
+<div class="list"></div><!-- /.list -->
+
+<div class="row-fluid">
+  <div class="mutator span12">
+    <div class="has-label">
+      <label>Ounces</label>
+      <input class="input-mini quantity" name="quantity" placeholder="Quantity" type="text" value="1" />
+    </div><!-- /.has-label -->
+    <div class="has-label">
+      <label>Hop Variety</label>
+      <select id="hop" class="name" name="name">
+        <option disabled="disabled" selected="selected">Select a hop variety</option>
+        <% _.each(window.availableHops.models, function(hop) { %>
+         <option value="<%= hop.cid %>"><%= hop.get("cultivar") %></option> 
+        <% }); %>
+      </select>
+    </div><!-- /.has-label -->
+    <div class="has-label">
+      <label>Time</label>
+      <input class="input-mini time" name="time" placeholder="Time" type="text" value="60" />
+    </div><!-- /.has-label -->
+    <div class="has-label">
+      <label>AA %</label>
+      <input class="input-mini aa" name="aa" placeholder="Alpha Acid" type="text" value="6.6" />
+    </div><!-- /.has-label -->
+    <div class="has-label">
+      <label>Form</label>
+      <select id="form" class="form" name="form">
+        <option value="Pellet">Pellet</option>
+        <option value="Pellet">Leaf</option>
+        <option value="Pellet">Plug</option>
+      </select>
+    </div><!-- /.has-label -->
+    <div class="no-label">
+      <button class="btn add">Add</button>
+    </div><!-- /.no-label -->
+  </div><!-- /.mutator -->
+</div><!-- /.row-fluid -->

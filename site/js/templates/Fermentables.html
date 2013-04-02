@@ -1,0 +1,22 @@
+<div class="list"></div><!-- /.list -->
+
+<div class="row-fluid">
+  <div class="mutator span12">
+    <div class="has-label">
+      <label>Pounds</label>
+      <input class="input-mini quantity" name="quantity" placeholder="Quantity" type="text" value="1" />
+    </div><!-- /.has-label -->
+    <div class="has-label">
+      <label>Fermentable</label>
+      <select id="cid" class="name" name="name">
+        <option disabled="disabled" selected="selected">Select a fermentable</option>
+        <% _.each(window.availableFermentables.models, function(fermentable) { %>
+         <option value="<%= fermentable.cid %>"><%= fermentable.get("name") %> (<%= fermentable.get("manufacturer") %>)</option> 
+        <% }); %>
+      </select>
+    </div><!-- /.has-label -->
+    <div class="no-label">
+      <button class="btn add">Add</button>
+    </div><!-- /.no-label -->
+  </div><!-- /.mutator -->
+</div><!-- /.row-fluid -->

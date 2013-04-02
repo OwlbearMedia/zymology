@@ -1,0 +1,39 @@
+<div class="view row-fluid">
+  <div class="attr split1"><%= percentage.toFixed(1) %>%</div><!-- /.attr -->
+  <div class="attr split2"><%= quantity %> lbs</div><!-- /.attr -->
+  <div class="attr title" data-toggle="tooltip" title="<p>Manufacturer: <%= manufacturer %></p><p>Origin: <%= origin %></p>"><%= name %></div><!-- /.attr -->
+  <div class="attr split1"><%= lovibond %> &deg;L</div><!-- /.attr -->
+  <div class="attr split2"><%= ppg %> PPG</div><!-- /.attr -->
+  <div class="btn-group edit-btn">
+    <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="icon-wrench"></i>&nbsp;
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+      <li><a href="#"><i class="icon-remove"></i> Delete</a></li>
+    </ul>
+  </div>
+  <!--<button class="btn btn-mini delete"><i data-attr="size" class="icon-remove" title="Delete"></i> Delete</button>
+  <button class="btn btn-mini modify"><i data-attr="size" class="icon-edit" title="Edit"></i> Edit</button>-->
+</div><!-- /.view -->
+<div class="edit row-fluid">
+  <div class="has-label">
+    <label>Quantity</label>
+    <input class="input-mini quantity" name="quantity" placeholder="Quantity" type="text" value="<%= quantity %>">
+  </div><!-- /.has-label -->
+  <div class="no-label">
+    <span><%= name %></span>
+  </div><!-- /.no-label -->
+  <div class="has-label">
+    <label>&deg; Lovibond</label>
+    <input class="input-mini lovibond" name="lovibond" placeholder="Lovibond" type="text" value="<%= lovibond %>">
+  </div><!-- /.has-label -->
+  <div class="has-label">
+    <label>PPG</label>
+    <input class="input-mini ppg" name="ppg" placeholder="PPG" type="text" value="<%= ppg %>">
+  </div><!-- /.has-label -->
+  <div class="no-label">
+    <button class="btn save">Save</button>
+  </div><!-- /.no-label -->
+</div><!-- /.edit -->

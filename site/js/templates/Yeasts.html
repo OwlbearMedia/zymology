@@ -1,0 +1,22 @@
+<div class="list"></div><!-- /.list -->
+
+<div class="row-fluid">
+  <div class="mutator span12">
+    <div class="has-label">
+      <label>Packages</label>
+      <input class="input-mini quantity" name="quantity" placeholder="Quantity" type="text" value="1" />
+    </div><!-- /.has-label -->
+    <div class="has-label">
+      <label>Yeast Strain</label>
+      <select id="yeast" class="name" name="name">
+        <option disabled="disabled" selected="selected">Select a yeast strain</option>
+        <% _.each(window.availableYeasts.models, function(yeast) { %>
+         <option value="<%= yeast.cid %>"><%= yeast.get("manufacturer") %> <%= yeast.get("number") %> <%= yeast.get("strain") %></option> 
+        <% }); %>
+      </select>
+    </div><!-- /.has-label -->
+    <div class="no-label">
+      <button class="btn add">Add</button>
+    </div><!-- /.no-label -->
+  </div><!-- /.mutator -->
+</div><!-- /.row-fluid -->

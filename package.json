@@ -1,0 +1,10 @@
+{
+  "name": "zymology",
+  "description": "hello world test app",
+  "version": "0.1.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "mongoose": "3.x"
+  }
+}
