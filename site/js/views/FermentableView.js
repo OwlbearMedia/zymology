@@ -11,9 +11,9 @@ define([
     template: _.template(fermentableTemplate),
 
     events: {
-      'click button.delete': 'remove',
-      'click button.modify': 'edit',
-      'click button.save': 'save'
+      'click .delete': 'remove',
+      'click .modify': 'edit',
+      'click .save': 'save'
     },
 
     initialize: function(){
@@ -30,6 +30,7 @@ define([
     },
 
     edit: function() {
+      console.log($(this.el).find('.edit'));
       $(this.el).find('.edit').slideDown();
       $(this.el).find('.view').slideUp();
     },

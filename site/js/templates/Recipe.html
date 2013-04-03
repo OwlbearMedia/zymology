@@ -1,30 +1,58 @@
-<h1 class="recipe-header">New Recipe</h1>
-<div class="btn-group recipe-edit">
-  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-    <i class="icon-wrench"></i>&nbsp;
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-    <li><a href="#"><i class="icon-remove"></i> Delete</a></li>
-    <li><a href="#"><i class="icon-ok"></i> Save</a></li>
-  </ul>
-</div>
+<div class="view stats">
+  <h1 class="recipe-header"><%= name %></h1>
+  <div class="btn-group recipe-edit">
+    <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="icon-wrench"></i>&nbsp;
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="modify-recipe" data-bypass="true" href="#"><i class="icon-pencil"></i> Edit</a></li>
+      <li><a class="delete-recipe" data-bypass="true" href="#"><i class="icon-remove"></i> Delete</a></li>
+      <li><a class="save-recipe" data-bypass="true" href="#"><i class="icon-ok"></i> Save</a></li>
+    </ul>
+  </div><!-- /.recipe-edit -->
+  <div class="row-fluid recipe-info">
+    <div class="span2 recipe-info-unit">
+      <p>BJCP Style</p>
+      <p class="title"><%= style.get('name') %></p>
+    </div><!-- /.recipe-info-unit -->
+    <div class="span2 recipe-info-unit">
+      <p>Batch Size</p>
+      <p class="title"><%= size %> gallons</p>
+    </div><!-- /.recipe-info-unit -->
+    <div class="span2 recipe-info-unit">
+      <p>Boil Time</p>
+      <p class="title"><%= time %> minutes</p>
+    </div><!-- /.recipe-info-unit -->
+  </div><!-- /.recipe-info -->
+</div><!-- /.view -->
 
-<div class="row-fluid recipe-info">
-  <div class="span2 recipe-info-unit">
-    <p>BJCP Style</p>
-    <p class="title"><%= style.name %></p>
-  </div><!-- /.recipe-info-unit -->
-  <div class="span2 recipe-info-unit">
-    <p>Batch Size</p>
-    <p class="title"><%= size %> gallons</p>
-  </div><!-- /.recipe-info-unit -->
-  <div class="span2 recipe-info-unit">
-    <p>Boil Time</p>
-    <p class="title"><%= time %> minutes</p>
-  </div><!-- /.recipe-info-unit -->
-</div><!-- /.recipe-info -->
+<div class="edit stats row-fluid">
+  <div class="has-label">
+    <label>Recipe Name</label>
+    <input class="input-medium name" name="name" placeholder="Recipe Name" type="text" value="<%= name %>">
+  </div><!-- /.has-label -->
+  <div class="has-label">
+    <label>Batch Size</label>
+    <input class="input-mini size" name="size" placeholder="Size" type="text" value="<%= size %>">
+  </div><!-- /.has-label -->
+  <div class="has-label">
+    <label>BJCP Style</label>
+    <select class="style" name="style">
+      <option value="" selected="selected"><%= style.get('name') %></option>
+      <% _.each(window.availableStyles.models, function(style) { %>
+       <option value="<%= style.cid %>"><%= style.get('number') %>. <%= style.get('name') %></option> 
+      <% }); %>
+    </select>
+  </div><!-- /.has-label -->
+  <div class="has-label">
+    <label>Boil Time</label>
+    <input class="input-mini time" name="time" placeholder="Boil Time" type="text" value="<%= time %>">
+  </div><!-- /.has-label -->
+  <div class="no-label">
+    <button class="btn save-recipe">Save</button>
+  </div><!-- /.no-label -->
+</div><!-- /.edit -->
 
 <div class="row-fluid recipe-section">
   <div class="span9">

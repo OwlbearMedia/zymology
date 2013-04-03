@@ -1,10 +1,12 @@
 {
-  "name": "zymology",
-  "description": "hello world test app",
+  "name": "Zymology Enhancement Suite",
+  "description": "Tools for crafting the ideal beer.",
+  "keywords" : ["zymology", "zymurgy", "beer", "brewing", "fermentation", "hops", "yeast", "barley"],
   "version": "0.1.1",
-  "private": true,
+  "author" : "Dylan Whitney <thedylanwhitney@gmail.com>",
   "dependencies": {
     "express": "3.x",
-    "mongoose": "3.x"
+    "mongoose": "3.x",
+    "shortid": "1.x"
   }
 }

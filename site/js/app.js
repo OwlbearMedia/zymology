@@ -32,13 +32,13 @@ require([
   'Dispatcher',
   'collections/Fermentables',
   'collections/Hops',
-  'collections/Yeasts'
-], function($, _, Backbone, text, Bootstrap, Dispatcher, Fermentables, Hops, Yeasts) {
+  'collections/Yeasts',
+  'collections/BJCPStyles'
+], function($, _, Backbone, text, Bootstrap, Dispatcher, Fermentables, Hops, Yeasts, BJCPStyles) {
 
-    window.availableFermentables = new Fermentables([
-      {name: 'American 2-Row', manufacturer: 'Breiss', lovibond: 2, ppg: 37},
-      {name: 'Biscuit Malt', manufacturer: 'Castle', lovibond: 23, ppg: 36, origin: 'Belgium'}
-    ]);
+    window.availableFermentables = new Fermentables();
+    window.availableFermentables.url = '/api/fermentables';
+    window.availableFermentables.fetch();
 
     window.availableHops = new Hops([
       {cultivar: 'Cascade', alphaAcid: 6.3},
@@ -48,6 +48,12 @@ require([
     window.availableYeasts = new Yeasts([
       {strain: 'American Ale', manufacturer: 'Wyeast', number: '1056'},
       {strain: 'French Saison', manufacturer: 'Wyeast', number: '3711', attenuationRange: {'high': 0.83,'low': 0.77}}
+    ]);
+
+    window.availableStyles = new BJCPStyles([
+      {number: '14A', name: 'English IPA'},
+      {number: '14B', name: 'American IPA'},
+      {number: '14C', name: 'Imperial IPA'}
     ]);
 
     var dispatcher = new Dispatcher();

@@ -16,13 +16,15 @@ define([
     template: _.template(recipeTemplate),
 
     events: {
-      //'click button#add-fermentable': 'addFermentable',
+      'click .delete-recipe': 'remove',
+      'click .modify-recipe': 'edit',
+      'click .save-recipe': 'save'
     },
 
     initialize: function(){
       var self = this;
 
-      _.bindAll(this, 'render', 'unrender', 'remove');
+      _.bindAll(this, 'render', 'unrender', 'remove', 'edit', 'save');
 
       this.model.on({
         'change': this.render,
@@ -81,6 +83,34 @@ define([
 
     remove: function() {
       this.model.destroy();
+    },
+
+    edit: function() {
+      $(this.el).find('.edit.stats').slideDown();
+      $(this.el).find('.view.stats').slideUp();
+    },
+
+    save: function() {
+      var self = this,
+          $edit = $(this.el).find('.stats'),
+          style = $edit.find('select.style').val();
+
+      if(style) {
+        style = window.availableStyles.get(style).clone();
+      }
+      else {
+        style = this.model.get('style');
+      }
+
+      $(this.el).find('.edit.stats').slideUp(400, function() {
+        self.model.set({
+          'name': $edit.find('input.name').val(),
+          'style': style,
+          'size': $edit.find('input.size').val(),
+          'time': $edit.find('input.time').val()
+        });
+      });
+      $(this.el).find('.view.stats').slideDown();
     }
   });
   return RecipeView;

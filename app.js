@@ -2,7 +2,7 @@
 var application_root = __dirname,
     express = require('express'), //Web framework
     path = require('path'), //Utilities for dealing with file paths
-    mongoose = require('mongoose'); //MongoDB integration
+    api = require('./api');
 
 //Create server
 var app = express();
@@ -27,37 +27,37 @@ app.configure(function() {
 
 // Routes
 app.get('/api', function(request, response) {
-  response.send('Library API is running');
+  response.send('Zymology Enhancement Suite API is running.');
 });
 
-//Connect to database
-mongoose.connect( 'mongodb://localhost/zymology' );
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-  // yay!
+app.get('/api/:noun', function(request, response) {
+  api.getResource(request, function(result) {
+    response.send(result);
+  });
 });
 
-//Schemas
-var Fermentable = new mongoose.Schema({
-  title: String,
-  author: String,
-  releaseDate: Date
+app.get('/api/:noun/:id', function(request, response) {
+  api.getResource(request, function(result) {
+    response.send(result);
+  });
 });
 
-//Models
-var BookModel = mongoose.model( 'Book', Book );
+app.post('/api/:noun', function(request, response) {
+  api.saveResource(request, function(result) {
+    response.send(result);
+  });
+});
 
-//Get a list of all books
-app.get( '/api/books', function( request, response ) {
-    return BookModel.find( function( err, books ) {
-        if( !err ) {
-            return response.send( books );
-        } else {
-            return console.log( err );
-        }
-    });
+app.delete('/api/:noun/:id', function(request, response) {
+  api.deleteResource(request, function(result) {
+    response.send(result);
+  });
+});
+
+app.put('/api/:noun/:id', function(request, response) {
+  api.updateResource(request, function(result) {
+    response.send(result);
+  });
 });
 
 //Start server

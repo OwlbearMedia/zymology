@@ -4,15 +4,13 @@ define([
   'collections/Fermentables',
   'collections/Hops',
   'collections/Yeasts',
-], function(_, Backbone, Fermentables, Hops, Yeasts) {
+  'models/BJCPStyle'
+], function(_, Backbone, Fermentables, Hops, Yeasts, BJCPStyle) {
   var Recipe = Backbone.Model.extend({
     defaults: {
       name: 'New Recipe',
       description: 'None',
-      style: {
-        'name': 'Style',
-        'type': 'ale'
-      },
+      style: new BJCPStyle(),
       ale: true,
       lager: false,
       size: 5,
@@ -23,7 +21,7 @@ define([
       gravity: {
         og: 1.000,
         fg: 1.000
-      }, 
+      },
       plato: {
         og: 0,
         fg: 0
@@ -46,7 +44,7 @@ define([
       var self = this;
 
       _.bindAll(this, 'calcPPG', 'calcGravity', 'calcPlato', 'colorize', 'calcIBU', 'calcYeast', 'calcCells');
-      
+
       this.get('fermentables').on({
         'add': function(model) {
           self.calcPPG(model, 'add');
@@ -116,7 +114,7 @@ define([
           ppg = this.get('ppg') - (model.get('quantity') * model.get('ppg') / this.get('size'));
           break;
         case 'change':
-          var prevPPG = (model.previousAttributes().quantity * model.previousAttributes().ppg / this.get('size')); 
+          var prevPPG = (model.previousAttributes().quantity * model.previousAttributes().ppg / this.get('size'));
           ppg = this.get('ppg') - prevPPG + (model.get('quantity') * model.get('ppg') / this.get('size'));
           break;
         case 'size':
@@ -159,7 +157,7 @@ define([
           mcu = this.get('mcu') - (model.get('quantity') * model.get('lovibond') / this.get('size'));
           break;
         case 'change':
-          var prevMCU = (model.previousAttributes().quantity * model.previousAttributes().lovibond / this.get('size')); 
+          var prevMCU = (model.previousAttributes().quantity * model.previousAttributes().lovibond / this.get('size'));
           mcu = this.get('mcu') - prevMCU + (model.get('quantity') * model.get('lovibond') / this.get('size'));
           break;
         case 'size':
@@ -168,7 +166,7 @@ define([
       }
 
       srm = 1.4922 * Math.pow(mcu, 0.6859);
-      
+
       this.set({
         'mcu': mcu,
         'srm': srm
@@ -212,7 +210,7 @@ define([
           cellCount = this.get('cellCount') - model.get('cells');
           break;
         case 'change':
-          var prevCount = (model.previousAttributes().cells); 
+          var prevCount = (model.previousAttributes().cells);
           cellCount = this.get('cellCount') - prevCount + model.get('cells');
           break;
       }
