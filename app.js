@@ -30,32 +30,52 @@ app.get('/api', function(request, response) {
   response.send('Zymology Enhancement Suite API is running.');
 });
 
+// Routes
+app.get('/api/errors', function(request, response) {
+  response.sendfile('site/errors.html');
+});
+
 app.get('/api/:noun', function(request, response) {
-  api.getResource(request, function(result) {
+  api.getResource(request, function(result, statusCode) {
+    if(statusCode) {
+      response.status(statusCode);
+    }
     response.send(result);
   });
 });
 
 app.get('/api/:noun/:id', function(request, response) {
-  api.getResource(request, function(result) {
+  api.getResource(request, function(result, statusCode) {
+    if(statusCode) {
+      response.status(statusCode);
+    }
     response.send(result);
   });
 });
 
 app.post('/api/:noun', function(request, response) {
-  api.saveResource(request, function(result) {
+  api.saveResource(request, function(result, statusCode) {
+    if(statusCode) {
+      response.status(statusCode);
+    }
     response.send(result);
   });
 });
 
 app.delete('/api/:noun/:id', function(request, response) {
-  api.deleteResource(request, function(result) {
+  api.deleteResource(request, function(result, statusCode) {
+    if(statusCode) {
+      response.status(statusCode);
+    }
     response.send(result);
   });
 });
 
 app.put('/api/:noun/:id', function(request, response) {
-  api.updateResource(request, function(result) {
+  api.updateResource(request, function(result, statusCode) {
+    if(statusCode) {
+      response.status(statusCode);
+    }
     response.send(result);
   });
 });
