@@ -1,5 +1,5 @@
 {
-  "name": "Zymology Enhancement Suite",
+  "name": "zymology-enhancement-suite",
   "description": "Tools for crafting the ideal beer.",
   "keywords" : ["zymology", "zymurgy", "beer", "brewing", "fermentation", "hops", "yeast", "barley"],
   "version": "0.1.1",
@@ -7,6 +7,8 @@
   "dependencies": {
     "express": "3.x",
     "mongoose": "3.x",
+    "passport": "*",
+    "passport-local": "*",
     "shortid": "1.x"
   }
 }

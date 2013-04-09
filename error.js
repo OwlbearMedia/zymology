@@ -23,7 +23,7 @@ ApiError.prototype.notFound = function() {
   this.message.error = {
     'status-code': 404,
     'link': 'http://127.0.0.1:4711/api/errors#404',
-    'message': 'The resouce being requested doesn\'t exist. Most likely the ID is incorrect, or if you\'re sure it\'s correct, maybe it has been deleted. Check your URL and make sure it is correct for the resource you are accessing and the action you are performing.'
+    'message': 'The resouce being requested doesn\'t exist. Most likely the ID is incorrect, or if you\'re sure it\'s correct, maybe it has been deleted. Check your HTTP headers as well as your URL and make sure it is correct for the resource you are accessing and the action you are performing.'
   };
   return this.message;
 };

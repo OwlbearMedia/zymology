@@ -1,7 +1,10 @@
 // Module dependencies.
 var application_root = __dirname,
-    express = require('express'), //Web framework
-    path = require('path'), //Utilities for dealing with file paths
+    express = require('express'),
+    zdm = require('./zdm'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy,
+    path = require('path'),
     api = require('./api');
 
 //Create server
@@ -20,9 +23,47 @@ app.configure(function() {
 
   //Where to serve static content
   app.use(express.static(path.join(application_root, 'site')));
+  app.use('/about', express.static(path.join(application_root, 'site')));
+  app.use('/recipe', express.static(path.join(application_root, 'site')));
+  app.use('/contact', express.static(path.join(application_root, 'site')));
+  app.use('/login', express.static(path.join(application_root, 'site')));
 
   //Show all errors in development
   app.use(express.errorHandler({dumpExceptions: true, showStack: true}));
+});
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    zdm.users.getOne({username: username}, function(err, user) {
+      if(err) {
+        return done(err);
+      }
+      if(!user) {
+        return done(null, false, {message: 'Incorrect username.'});
+      }
+      if(!user.validPassword(password)) {
+        return done(null, false, {message: 'Incorrect password.'});
+      }
+      return done(null, user);
+    });
+  }
+));
+
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  })
+);
+
+app.post('/users', function(request, response) {
+  zdm.users.save(request.body, function(err, result) {
+    if(err) {
+      response.send(err);
+    } else {
+      response.send(201, result);
+    }
+  });
 });
 
 // Routes

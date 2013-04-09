@@ -1,6 +1,7 @@
 // Module dependencies.
 var mongoose = require('mongoose'),
     fermentables = require('./fermentables');
+    users = require('./users');
 
 function ZDM() {}
 
@@ -12,5 +13,6 @@ ZDM.prototype.connection = mongoose.connection;
 
 // Models
 ZDM.prototype.fermentables = fermentables;
+ZDM.prototype.users = users;
 
 var zdm = module.exports = exports = new ZDM();

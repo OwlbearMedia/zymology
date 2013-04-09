@@ -5,15 +5,17 @@ define([
   'models/Recipe',
   'views/RecipeView',
   'views/AboutView',
-  'views/ContactView'
-], function(_, Backbone, HomeView, Recipe, RecipeView, AboutView, ContactView) {
+  'views/ContactView',
+  'views/LoginView'
+], function(_, Backbone, HomeView, Recipe, RecipeView, AboutView, ContactView, LoginView) {
   var Dispatcher = Backbone.Router.extend({
 
     routes: {
       '': 'home',
       'recipe': 'recipe',
       'about': 'about',
-      'contact': 'contact'
+      'contact': 'contact',
+      'login': 'login',
     },
 
     $nav: $('ul.nav'),
@@ -65,6 +67,13 @@ define([
       this.$nav.find('.contact').addClass('active');
 
       var contact = new ContactView();
+    },
+
+    login: function() {
+      this.$nav.find('li').removeClass('active');
+      //this.$nav.find('.contact').addClass('active');
+
+      var login = new LoginView();
     }
   });
   return Dispatcher;
